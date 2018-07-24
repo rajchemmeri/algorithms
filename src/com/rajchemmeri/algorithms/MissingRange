@@ -1,0 +1,59 @@
+package array;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class MissinNosInRange {
+
+	List<String> list = new ArrayList<String>();
+	int  min=0; int max =99;
+
+	public static void main(String[] args) {
+
+		MissinNosInRange obj = new MissinNosInRange();
+
+	     int  min=0; int max =99;
+
+		int lowBound = 0; int upperBound = 99;
+
+		int[] input = new int[] {88, 105, 3, 2, 200, 0, 10}; //0,2,3,10,88,105,200
+															//5,6,9,90,99,100,850,900
+
+		Arrays.sort(input);
+
+		int i = 0;
+
+		
+		lowBound = input[0] > min ? min :input[0];
+		
+		while(i < input.length && lowBound < max) {
+			upperBound = input[i];
+			if( upperBound - lowBound > 1) {
+				obj.getRange(lowBound, upperBound );
+			}
+			
+			lowBound = input[i];
+			++i;
+		}
+		
+		for( String x : obj.list) {
+			System.out.println( x );
+		}
+
+
+		
+
+	}
+	public void getRange(int ilow,int imax) {
+		ilow = ilow == min ? ilow : ilow +1;
+		if ( imax > max)
+			imax = max;
+		else
+			imax = imax-1;	
+		list.add(""+ ilow  + "-" + imax);
+		
+		
+	}
+
+}
