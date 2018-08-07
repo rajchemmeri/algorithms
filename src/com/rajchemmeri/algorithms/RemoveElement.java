@@ -31,5 +31,7 @@ public class RemoveElement {
 			System.out.println(input[x]);
 		}
 	}
+	
+	return high;
 
 }
