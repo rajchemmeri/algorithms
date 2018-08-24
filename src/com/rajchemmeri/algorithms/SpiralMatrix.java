@@ -18,7 +18,7 @@ public class SpiralMatrix {
     
 		while(i< last_row && j < last_col) {
 			
-			      for(int k =0;k<last_col;++k) {
+			      for(int k = j;k<last_col;++k) {
 				        System.out.print(matrix[i][k]);
 			      }
 			      ++i;
