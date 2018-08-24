@@ -1,5 +1,7 @@
 package array;
 
+
+//first_row -> last_colum -> last_row ->first_columb [ repeating the same ]
 public class SpiralMatrix {
 
 	public static void main(String[] args) {
