@@ -43,17 +43,10 @@ public class StringCompressionInPlace {
 		}
 
 		System.out.println(new String(input));
-		System.out.println("Length : "+ (j + (countPositions(count) -1)));
+		System.out.println("Length : "+ (j));
 
 	}
 
-	private static int countPositions( int x) {
-      int count = 0;
-      while( x > 0) {
-          count+=1;
-          x= x/10;
-      }
-      return count;
-	}
+	
 
 }
