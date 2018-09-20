@@ -54,29 +54,29 @@ public class MinimumWindowSubstring {
 						  winSize+=1;
 				}
 
-				if( winSize == search.length()) {
+					if( winSize == search.length()) {
         
-            while(start < input.length() && 
-                  srchCharCnt.getOrDefault(input.charAt(start), 0) == 0 || 
-                        winMap.getOrDefault(input.charAt(start),0).intValue() > srchCharCnt.getOrDefault(input.charAt(start),0)) {
+				    		while(start < input.length() && 
+					  		srchCharCnt.getOrDefault(input.charAt(start), 0) == 0 || 
+								winMap.getOrDefault(input.charAt(start),0).intValue() > srchCharCnt.getOrDefault(input.charAt(start),0)) {
 
-                  if(winMap.getOrDefault(input.charAt(start),0).intValue() > srchCharCnt.getOrDefault(input.charAt(start),0))
-                        winMap.put(input.charAt(start), winMap.get(input.charAt(start)).intValue()-1);
-                  ++start;
-            }
+						  if(winMap.getOrDefault(input.charAt(start),0).intValue() > srchCharCnt.getOrDefault(input.charAt(start),0))
+							winMap.put(input.charAt(start), winMap.get(input.charAt(start)).intValue()-1);
+						  ++start;
+				    		}
 
-            minLength = Math.min(minLength, (end - start)+1);
+					    minLength = Math.min(minLength, (end - start)+1);
 
-            winMap.put(input.charAt(start), winMap.get(p).intValue()-1);
+					    winMap.put(input.charAt(start), winMap.get(p).intValue()-1);
 
-            winSize = winSize-1;
-            
-            start++;
-				}
+					    winSize = winSize-1;
+
+					    start++;
+					}
 				
+				}
+				++end;
 			}
-			++end;
-		}
 
 		return minLength;
 	}
