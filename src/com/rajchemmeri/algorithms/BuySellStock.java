@@ -17,13 +17,13 @@ public class BuySellStock {
 
 		for(int i =0 ;i< prices.length;++i){
     
-        if( prices[i] <  low_buy_price){
-            low_buy_price = prices[i];
-        }
+			if( prices[i] <  low_buy_price){
+			    low_buy_price = prices[i];
+			}
 
-        if( (prices[i] - low_buy_price) >  max_profit){
-            max_profit = prices[i] - low_buy_price;
-        }
+			if( (prices[i] - low_buy_price) >  max_profit){
+			    max_profit = prices[i] - low_buy_price;
+			}
 		}
 		return max_profit;
 
