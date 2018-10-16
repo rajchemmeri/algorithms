@@ -44,47 +44,47 @@ public class SpiralMatrixIII_885 {
 			 int i = 1;
 			 
 			 while( i <= noOfSteps) {
-           if( (cRow >= 0 && cRow< R) && (cCol >=0 && cCol < C) ) {
-             int[] res = new int[] {cRow,cCol};
-             output[k++] = res;
-             ++start;
-           }
-           ++i;
-           ++cCol;
+				   if( (cRow >= 0 && cRow< R) && (cCol >=0 && cCol < C) ) {
+				     int[] res = new int[] {cRow,cCol};
+				     output[k++] = res;
+				     ++start;
+				   }
+				   ++i;
+				   ++cCol;
 			 }
 			
 			 i = 1;
 			 while( i <= noOfSteps) {
-           if( (cRow >= 0 && cRow< R) && (cCol >=0 && cCol < C) ) {
-             int[] res = new int[] {cRow,cCol};
-             output[k++] = res;
-             ++start;
-           }
-           ++i;
-           ++cRow;
+				   if( (cRow >= 0 && cRow< R) && (cCol >=0 && cCol < C) ) {
+				     int[] res = new int[] {cRow,cCol};
+				     output[k++] = res;
+				     ++start;
+				   }
+				   ++i;
+				   ++cRow;
 			 }
 			 
 			 i = 1;
 			 noOfSteps = noOfSteps + 1;
 			 while( i <= noOfSteps) {
-           if( (cRow >= 0 && cRow< R) && (cCol >=0 && cCol < C) ) {
-             int[] res = new int[] {cRow,cCol};
-             output[k++] = res;
-             ++start;
-           }
-           ++i;
-           --cCol;
+				   if( (cRow >= 0 && cRow< R) && (cCol >=0 && cCol < C) ) {
+				     int[] res = new int[] {cRow,cCol};
+				     output[k++] = res;
+				     ++start;
+				   }
+				   ++i;
+				   --cCol;
 			 } 
 			 
 			 i = 1;
 			 while( i <= noOfSteps) {
-           if( (cRow >= 0 && cRow< R) && (cCol >=0 && cCol < C) ) {
-             int[] res = new int[] {cRow,cCol};
-             output[k++] = res;
-             ++start;
-           }
-           ++i;
-           --cRow;
+				   if( (cRow >= 0 && cRow< R) && (cCol >=0 && cCol < C) ) {
+				     int[] res = new int[] {cRow,cCol};
+				     output[k++] = res;
+				     ++start;
+				   }
+				   ++i;
+				   --cRow;
 			 } 
 			
 		}
