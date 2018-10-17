@@ -33,32 +33,32 @@ public class SpiralMatrix {
 		int i = 1;
 		while( i < n*n) {
 			
-        while( curCol >= 0  && curCol < maxCol) {
-          out[curRow][curCol] = i;
-          ++curCol;
-          ++i;
-        }
-			  ++fRow;
+				while( curCol >= 0  && curCol < maxCol) {
+				    out[curRow][curCol] = i;
+			            ++curCol;
+				    ++i;
+				}
+			  	++fRow;
 
-        while( curRow >=0 && curRow < maxRow ) {
-          out[curRow][curCol] = i;
-          ++curRow;
-          ++i;
-        }
+				while( curRow >=0 && curRow < maxRow ) {
+				  out[curRow][curCol] = i;
+				  ++curRow;
+				  ++i;
+				}
 
-			--maxCol;
+				--maxCol;
 
-        while( curCol > fCol ) {
-          out[curRow][curCol] = i;
-          --curCol;
-          ++i;
-        }
-        --maxRow;
-        while( curRow > fRow ) {
-          out[curRow][curCol] = i;
-          --curRow;
-          ++i;
-        }
+				while( curCol > fCol ) {
+				  out[curRow][curCol] = i;
+				  --curCol;
+				  ++i;
+				}
+				--maxRow;
+				while( curRow > fRow ) {
+				  out[curRow][curCol] = i;
+				  --curRow;
+				  ++i;
+				}
 			++fCol;
 			
 		}
