@@ -27,7 +27,43 @@ public class SpiralMatrix {
 		int ct = 1;
 		while(ct <= n*n) {
 
-			for(int k =0;k<=right;++k) {
+			for(int k =
+		int top = 0 ;
+		int left = 0;
+		int right = n -1;
+		int bottom = n -1;
+
+		int i = 0, j = 0;
+		int[][] out = new int[n][n];
+		int ct = 1;
+		while(ct <= n*n) {
+
+			for(int k =left;k<=right;++k) {
+				out[top][k] = ct;
+				ct++;
+			}
+			++top;
+
+			for(int l=top;l<=bottom;++l) {
+				out[l][right] = ct;
+				ct++;
+			}
+			--right;
+
+			for(int k= right;k>=left;--k) {
+				out[bottom][k] = ct;
+				ct++;
+			}
+			--bottom;
+
+			for(int k= bottom;k>=top;--k) {
+				out[k][left] = ct;
+				ct++;
+			}
+			++left;
+		}
+		return out;
+	;k<=right;++k) {
 				out[top][k] = ct;
 				ct++;
 			}
