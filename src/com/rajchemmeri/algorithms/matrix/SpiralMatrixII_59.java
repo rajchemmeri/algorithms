@@ -16,8 +16,44 @@ public class SpiralMatrix {
 			System.out.println();
 		}
 	}
+	public int[][] generateMatrix2(int n) {
+		int top = 0 ;
+		int left = 0;
+		int right = n -1;
+		int bottom = n -1;
 
-	public int[][] generateMatrix(int n) {
+		int i = 0, j = 0;
+		int[][] out = new int[n][n];
+		int ct = 1;
+		while(ct <= n*n) {
+
+			for(int k =0;k<=right;++k) {
+				out[top][k] = ct;
+				ct++;
+			}
+			++top;
+
+			for(int l=top;l<=bottom;++l) {
+				out[l][right] = ct;
+				ct++;
+			}
+			--right;
+
+			for(int k= right;k>=left;--k) {
+				out[bottom][k] = ct;
+				ct++;
+			}
+			--bottom;
+
+			for(int k= bottom;k>=top;--k) {
+				out[k][left] = ct;
+				ct++;
+			}
+			++left;
+		}
+		return out;
+	}
+	public int[][] generateMatrix(int n) {//not working
 
 		int curRow = 0;
 		int curCol = 0;
