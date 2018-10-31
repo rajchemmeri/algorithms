@@ -15,78 +15,90 @@ import java.util.Map;
 	Output: "BANC"
  * 
  */
-public class MinimumWindowSubstring {
+package array;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class SlidingWindow {
+
+	/*
+	 * Input: S = "PADOBECODEBANC", T = "ABC"
+	   Output: "BANC"
+	 * 
+	 */
 
 	public static void main(String[] args) {
-		MinimumWindowSubstring obj = new MinimumWindowSubstring();
-	//	int min = obj.minWindow("PADOBECODEBANC", "ABC");
-		int min = obj.minWindow("ADOBECODEBANCABC", "ABC");
-		System.out.println("Min : "+ min);
+
+		String S = "PADOBECODEBANC";
+		String T = "ABC";
+		SlidingWindow win = new SlidingWindow();
+		win.parseDataString(S, T);
 	}
 
-	public int minWindow(String input, String search) {
+	private Map<Character,Integer> createWindowMap(String t) {
 
-		int minLength = Integer.MAX_VALUE;
+		Map<Character,Integer> winMap = new HashMap<Character, Integer>();
 
-		Map<Character,Integer> srchCharCnt = new HashMap<Character,Integer>();
-		Map<Character,Integer> winMap = new HashMap<Character,Integer>();
-
-		getSrchCharCount(srchCharCnt, search);
-
-		int start = 0;
-		int end  = 0;
-		int winSize = 0;
-
-		
-		//	Input: S = "PADOBECODEBANC", T = "ABC"
-
-		while( start <= end) {
-			
-			if( end < input.length()) {
-				
-				char p = input.charAt(end);
-
-				int count = srchCharCnt.getOrDefault(p, 0);
-
-				if( count != 0 ) {
-					winMap.put(p, winMap.getOrDefault(p, 0)+1);
-					  if(winMap.get(p).intValue() ==  srchCharCnt.get(p).intValue())
-						  winSize+=1;
-				}
-
-					if( winSize == search.length()) {
-        
-				    		while(start < input.length() && 
-					  		srchCharCnt.getOrDefault(input.charAt(start), 0) == 0 || 
-								winMap.getOrDefault(input.charAt(start),0).intValue() > srchCharCnt.getOrDefault(input.charAt(start),0)) {
-
-						  if(winMap.getOrDefault(input.charAt(start),0).intValue() > srchCharCnt.getOrDefault(input.charAt(start),0))
-							winMap.put(input.charAt(start), winMap.get(input.charAt(start)).intValue()-1);
-						  ++start;
-				    		}
-
-					    minLength = Math.min(minLength, (end - start)+1);
-
-					    winMap.put(input.charAt(start), winMap.get(p).intValue()-1);
-
-					    winSize = winSize-1;
-
-					    start++;
-					}
-				
-				}
-				++end;
-			}
-
-		return minLength;
-	}
-	private void getSrchCharCount(Map<Character,Integer> srchCharCnt, String search) {
-
-		for(char x : search.toCharArray()) {
-
-			int count  = srchCharCnt.getOrDefault(x, 0);
-			srchCharCnt.put(x, count+1);
-
+		for(char x : t.toCharArray()) {
+			int count = winMap.getOrDefault(x, 0);
+			winMap.put(x, count+1);
 		}
+		return winMap;
+	}
+
+	private void parseDataString( String s, String t) {
+
+		Map<Character,Integer> winMap =  createWindowMap(t);
+
+		int counter = 0;
+		int minLength = Integer.MAX_VALUE;
+		int left = 0;
+		int right = 0;
+
+		while(right < s.length()) {
+
+			char x = s.charAt(right);
+
+			if(winMap.containsKey(x)) {
+
+				winMap.put(x, winMap.get(x) - 1);
+				if(winMap.get(x) >= 0 ) {
+					counter += 1;
+				}
+			}
+			
+			
+			
+			if( counter == t.length()) {
+				
+				minLength = Math.min(minLength, right+1);
+				
+				while( counter == t.length()) {
+
+					char key = s.charAt(left);
+
+					if(winMap.containsKey(key)) {
+
+						winMap.put(key, winMap.get(key)+1);
+						
+						if( winMap.get(key) > 0) {
+							--counter;
+							//break;
+						}
+
+					}
+					++left;
+				}
+				minLength = Math.min(minLength, (right - left)+1);
+				System.out.println(s.substring(left-1, right+1));
+			}
+			
+			++right;
+		}
+			
+		System.out.println("Min Length : "+ minLength);
+
 	}
 }
+
